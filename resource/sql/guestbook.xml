@@ -30,7 +30,7 @@
 		<![CDATA[
 		insert
 		  into guestbook
-		values ( guestbook_seq.nextval, #name#, #pwd#, #msg#, #date# )
+		values ( guestbook_seq.nextval, #name#, #pwd#, #msg#, sysdate)
 		]]>  
 	</insert>
 	
