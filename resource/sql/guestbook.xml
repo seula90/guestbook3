@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="guestbook">
+	<typeAlias alias="GuestBookVo" type="com.sds.icto.guestbookVo.GuestBookVo" />
+	
+	<resultMap class="GuestBookVo" id="resultMapList">
+		<result column="no" property="no"/>
+		<result column="name" property="name"/>
+		<result column="password" property="pwd"/>
+		<result column="message" property="msg"/>
+		<result column="reg_date" property="date"/>
+	</resultMap>
+
+	<select id="list" resultMap="resultMapList">
+		<![CDATA[
+		select *
+		  from guestbook
+		]]>  
+	</select>
+	
+
+	<delete id="delete" parameterClass="GuestBookVo">
+		<![CDATA[
+		delete from guestbook
+			where no=#no# and password=#pwd#
+		]]>
+	</delete>
+	
+	<insert id="insert" parameterClass="GuestBookVo">
+		<![CDATA[
+		insert
+		  into guestbook
+		values ( guestbook_seq.nextval, #name#, #pwd#, #msg#, #date# )
+		]]>  
+	</insert>
+	
+		
+</sqlMap> 
